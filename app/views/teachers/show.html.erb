@@ -1,0 +1,39 @@
+<h2>Welcome <%= current_teacher.first_name%></h2>
+Lets teach...
+
+</br>
+</br>
+<p>You currently have <%= current_teacher.courses.count%> following courses:</p>
+
+<table>
+
+  <tr style="font-weight: bold;">
+    <td>Title</td>
+    <td>Description</td>
+    <td>Subject</td>
+    <td>Other Info</td>
+  </tr>
+
+  <% current_teacher.courses.each do |course| %>
+
+    <tr>
+      <td><a href="/teachers/edit/<%=course.id%>"><%= course.title %></a></td>
+      <td><%= course.description %></td>
+      <td><%= course.subject %></td>
+      <td><%= course.properties_list%></td>
+    </tr>
+
+  <% end %>
+</table>
+
+</br>
+</br>
+
+<h3>Create a new course</h3>
+<form action='/teachers/create_course' method="post">
+  Title: <input type="text" name="title"></br>
+  Description: <input type="text" name="description" size="64"></br>
+  Subject: <input type="text" name="subject"></br>
+  Other Properties: <input type="text" name="properties_list"></br>
+  <input type="submit">
+</form>

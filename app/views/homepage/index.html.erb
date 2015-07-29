@@ -1,0 +1,19 @@
+<h1 style="text-align:center">Welcome to Lessonlytics.</h1>
+<p style="text-align:center">Lets make online education videos smarter...</p>
+
+<div style="text-align:center">
+<h3>Students</h3>
+<!--   <a href="/students/new">SignUp</a></br>
+  <a href="/students/login">Login</a></br> -->
+
+    <%= link_to 'Signup', {controller: 'session', action: 'signup', usertype: 'student'} %>
+    <%= link_to 'Login', login_path %>
+
+  <h3>Teachers</h3>
+<!--   <a href="/teachers/new">SignUp</a></br>
+  <a href="/teachers/login">Login</a></br> -->
+
+    <%= link_to 'Signup', {controller: 'session', action: 'signup', usertype: 'teacher'} %>
+    <%= link_to 'Login', login_path %>
+
+</div>

@@ -1,0 +1,29 @@
+<h2>Welcome <%= @student.first_name%></h2>
+Let's learn...
+
+</br>
+</br>
+<p>You currently can take <%= @student.courses.count%> following courses:</p>
+
+<table>
+
+  <tr style="font-weight: bold;">
+    <td>Title</td>
+    <td>Description</td>
+    <td>Instructor</td>
+    <td>Subject</td>
+    <td>Other Info</td>
+  </tr>
+
+  <% @student.courses.each do |course| %>
+
+    <tr>
+      <td><a href="/students/register/<%=course.id%>"><%= course.title %></a></td>
+      <td><%= course.description %></td>
+      <td><%= course.teacher.first_name %> <%= course.teacher.last_name %></td>
+      <td><%= course.subject %></td>
+      <td><%= course.properties_list%></td>
+    </tr>
+
+  <% end %>
+</table>
