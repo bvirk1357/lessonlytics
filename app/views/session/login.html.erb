@@ -1,5 +1,19 @@
-<form action='/teachers/login' method="post">
+<!-- <form action='/login' method="post">
   Username: <input type="text" name="username"></br>
   Password: <input type="password" name="password"></br>
   <input type="submit">
-</form>
+</form> -->
+
+<h2>Lets login</h2>
+
+<%= form_tag({:controller => "session", :action => "create"}, {:method => "post"}) do %>
+
+  Username:
+  <%= text_field_tag "username" %><br />
+
+  Password:
+  <%= password_field_tag "password" %><br />
+
+  <%= submit_tag 'Submit' %>
+
+<% end %>

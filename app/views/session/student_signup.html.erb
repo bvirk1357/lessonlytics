@@ -1,12 +1,20 @@
 <h2>Welcome Student!!</h2>
 
-<form action='/students' method="post">
+<%= form_for :student, url: students_path do |f| %>
+  <%= f.label :first_name %>:
+  <%= f.text_field :first_name %><br />
 
-  First name: <input type="text" name="firstname"></br>
-  Last name: <input type="text" name="lastname"></br>
-  Username: <input type="text" name="username"></br>
-  Password: <input type="password" name="password"></br>
-  Email: <input type="text" name="email"></br>
+  <%= f.label :last_name %>:
+  <%= f.text_field :last_name %><br />
 
-  <input type="submit">
-</form>
+  <%= f.label :username %>:
+  <%= f.text_field :username %><br />
+
+  <%= f.label :password %>:
+  <%= f.password_field :password %><br />
+
+  <%= f.label :email %>:
+  <%= f.password_field :email %><br />
+
+  <%= f.submit %>
+<% end %>

@@ -11,9 +11,88 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20150729000644) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "courses", force: :cascade do |t|
+    t.string   "title"
+    t.string   "description"
+    t.string   "subject"
+    t.string   "properties_list"
+    t.integer  "teacher_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "coursestudents", force: :cascade do |t|
+    t.integer  "course_id"
+    t.integer  "student_id"
+    t.string   "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "coursestudents", ["course_id"], name: "index_coursestudents_on_course_id", using: :btree
+  add_index "coursestudents", ["student_id"], name: "index_coursestudents_on_student_id", using: :btree
+
+  create_table "coursevideos", force: :cascade do |t|
+    t.integer  "course_id"
+    t.integer  "video_id"
+    t.float    "video_sequence_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  add_index "coursevideos", ["course_id"], name: "index_coursevideos_on_course_id", using: :btree
+  add_index "coursevideos", ["video_id"], name: "index_coursevideos_on_video_id", using: :btree
+
+  create_table "questions", force: :cascade do |t|
+    t.string   "question"
+    t.integer  "type"
+    t.string   "answer_list"
+    t.string   "correct_answer"
+    t.integer  "avg_time"
+    t.integer  "test_taker_count"
+    t.integer  "video_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "questions", ["video_id"], name: "index_questions_on_video_id", using: :btree
+
+  create_table "students", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "username"
+    t.integer  "student_id"
+    t.integer  "age"
+    t.integer  "zipcode"
+    t.string   "password"
+    t.string   "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "teachers", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "username"
+    t.integer  "teacher_id"
+    t.string   "password"
+    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "videos", force: :cascade do |t|
+    t.string   "title"
+    t.string   "description"
+    t.string   "external_url"
+    t.string   "internal_resource_path"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end
