@@ -17,6 +17,7 @@ Lets teach...
   <% current_teacher.courses.each do |course| %>
 
     <tr>
+      <td><% link_to "#{course.title}",  %></td>
       <td><a href="/teachers/edit/<%=course.id%>"><%= course.title %></a></td>
       <td><%= course.description %></td>
       <td><%= course.subject %></td>
